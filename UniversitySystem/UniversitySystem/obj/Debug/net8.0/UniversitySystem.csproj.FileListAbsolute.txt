@@ -1,0 +1,15 @@
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/bin/Debug/net8.0/UniversitySystem
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/bin/Debug/net8.0/UniversitySystem.deps.json
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/bin/Debug/net8.0/UniversitySystem.runtimeconfig.json
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/bin/Debug/net8.0/UniversitySystem.dll
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/bin/Debug/net8.0/UniversitySystem.pdb
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/obj/Debug/net8.0/UniversitySystem.GeneratedMSBuildEditorConfig.editorconfig
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/obj/Debug/net8.0/UniversitySystem.AssemblyInfoInputs.cache
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/obj/Debug/net8.0/UniversitySystem.AssemblyInfo.cs
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/obj/Debug/net8.0/UniversitySystem.csproj.CoreCompileInputs.cache
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/obj/Debug/net8.0/UniversitySystem.sourcelink.json
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/obj/Debug/net8.0/UniversitySystem.dll
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/obj/Debug/net8.0/refint/UniversitySystem.dll
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/obj/Debug/net8.0/UniversitySystem.pdb
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/obj/Debug/net8.0/UniversitySystem.genruntimeconfig.cache
+/media/anonymous/Date1/GitHub Projects/UniversitySystem/UniversitySystem/UniversitySystem/obj/Debug/net8.0/ref/UniversitySystem.dll
