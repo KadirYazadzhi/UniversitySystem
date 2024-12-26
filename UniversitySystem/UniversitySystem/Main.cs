@@ -12,6 +12,7 @@ class Start {
     public static List<Subject> Subjects = new List<Subject>();
     public static List<Course> Courses = new List<Course>();
     public static List<Schedule> Schedules = new List<Schedule>();
+    public static List<Specialty> Specialties = new List<Specialty>();
     
     public static void Main(string[] args) {
         
