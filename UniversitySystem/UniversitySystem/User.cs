@@ -40,7 +40,25 @@ public class User {
         }
         
         Console.WriteLine("Enter your speciality: ");
-        Specialty specialty = new Specialty(Console.ReadLine());
+        Specialty specialty = null;
+
+        while (true) {
+            specialty =  new Specialty(Console.ReadLine());
+            
+            if (!specialty.isSpecialtyExist()) {
+                Console.WriteLine("Specialty doesn't exist");
+                Console.WriteLine("Are you want to view all the specialties? [y/n]");
+                
+                char key = Console.ReadKey().KeyChar;
+
+                if (key != 'y') continue;
+            
+                Specialty.ViewAllSpecialties();
+            }
+            else {
+                break;
+            }
+        }
         
         Console.WriteLine("Enter your password:");
         string password = Console.ReadLine();
