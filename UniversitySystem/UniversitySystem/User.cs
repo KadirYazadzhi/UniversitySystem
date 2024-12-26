@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace UniversitySystem;
 
 public class User {
@@ -15,6 +17,50 @@ public class User {
         Email = email;
         Password = password;
         Role = role;
+    }
+
+    public void Register() {
+        Console.WriteLine("Enter username:");
+        string username = Console.ReadLine();
+
+        if (FindStudentUsername(username)) {
+            Console.WriteLine("Username already exists");
+            return;
+        }
+        
+        Console.WriteLine("Enter your full name:");
+        string fullName = Console.ReadLine();
+        
+        Console.WriteLine("Enter your email:");
+        string email = Console.ReadLine();
+
+        if (IsEmailExist(email)) {
+            Console.WriteLine("Email already exists");
+            return;
+        }
+        
+        Console.WriteLine("Enter your speciality: ");
+        Specialty specialty = new Specialty(Console.ReadLine());
+        
+        Console.WriteLine("Enter your password:");
+        string password = Console.ReadLine();
+
+        if (!CheckPasswordIsStrong(password)) return;
+        
+        Student student = new Student(
+            id: GetLastId() + 1,
+            username: username,
+            email: email,
+            password: password,
+            role: "Student",
+            fullName: fullName,
+            specialty: specialty,
+            program: new Program(),
+            enrolledCourses: new List<Course>()
+        );
+        
+        Start.Students.Add(student);
+        Console.WriteLine("You successfully registered");
     }
 
     public void Login() {
@@ -38,12 +84,16 @@ public class User {
         string password = Console.ReadLine();
 
         if (type.ToLower() == "student") {
-            CheckStudentUsernameAndPassword(username, password);
+            if (CheckStudentUsernameAndPassword(username, password)) {
+                Console.WriteLine("You are logged in as student!");
+            }
             return;
         }
         
         if (type.ToLower() == "admin") {
-            CheckAdminUsernameAndPassword(username, password);
+            if (CheckAdminUsernameAndPassword(username, password)) {
+                Console.WriteLine("You are logged in as admin!");
+            }
             return;
         }
         
@@ -78,5 +128,37 @@ public class User {
         }
         
         return false;
+    }
+
+    private bool IsEmailExist(string email) {
+        return Start.Students.Any(student => student.Email == email);
+    }
+
+    private bool CheckPasswordIsStrong(string password) {
+        if (password.Length < 6) {
+            Console.WriteLine("Password must be at least 6 characters long");
+            return false;
+        }
+        if (!password.Any(char.IsUpper)) {
+            Console.WriteLine("Password must contain at least one uppercase letter");
+            return false;
+        }
+        if (!password.Any(char.IsLower)) {
+            Console.WriteLine("Password must contain at least one lowercase letter");
+            return false;
+        }
+        if (!password.Any(char.IsDigit)) {
+            Console.WriteLine("Password must contain at least one digit");
+            return false;
+        }
+        if (!password.Any(ch => "!@#$%^&*()_+[]{}|;:',.<>?".Contains(ch))) {
+            Console.WriteLine("Password must contain at least one special character");
+            return false;
+        }
+        return true;
+    }
+
+    private int GetLastId() {
+        return Start.Students.Count;
     }
 }
