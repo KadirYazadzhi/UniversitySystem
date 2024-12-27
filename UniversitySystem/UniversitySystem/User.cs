@@ -23,7 +23,7 @@ public class User {
         Console.WriteLine("Enter username:");
         string username = Console.ReadLine();
 
-        if (FindStudentUsername(username)) {
+        if (IsStudentExist(username)) {
             Console.WriteLine("Username already exists");
             return;
         }
@@ -93,7 +93,7 @@ public class User {
         Console.WriteLine("Enter username: ");
         string username = Console.ReadLine();
 
-        if (type.ToLower() == "admin" && !FindAdminUsername(username) || type.ToLower() == "student" && !FindStudentUsername(username)) {
+        if (type.ToLower() == "admin" && !FindAdminUsername(username) || type.ToLower() == "student" && !IsStudentExist(username)) {
             Console.WriteLine("Invalid username");
             return;
         }
@@ -118,7 +118,7 @@ public class User {
         Console.WriteLine("Invalid password");
     }
 
-    private bool FindStudentUsername(string username) {
+    private bool IsStudentExist(string username) {
         return Start.Students.Any(student => student.Username == username);
     }
 
