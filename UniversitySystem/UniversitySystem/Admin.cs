@@ -54,6 +54,14 @@ public class Admin : User {
         Console.WriteLine(string.Join(" " ,Start.Students[index].Grades));
     }
 
+    public void ViewStudentProgram() {
+        int index = FindUserIndex() ;
+        if (index == -1) return;
+        
+        Console.WriteLine($"Student ${Start.Students[index].Username} have the following program:");
+    
+    }
+
     public static void ChangeStudentData() {
         int index = FindUserIndex() ;
         if (index == -1) return;
@@ -87,6 +95,14 @@ public class Admin : User {
                 break;
         }
     }
+    
+    public static void ViewEnrolledCoursesOfStudent() {
+        int index = FindUserIndex() ;
+        if (index == -1) return;
+        
+        Console.WriteLine("Enrolled courses:");
+        Console.WriteLine(string.Join(", " ,Start.Students[index].EnrolledCourses));
+    }
 
     private static void ChangeStudentUsername(int index) {
         Console.WriteLine("Enter new username for this student:");
@@ -106,7 +122,25 @@ public class Admin : User {
                 
         Console.WriteLine("You sucessfully changed student username.");
     }
+    
+    private static void ChangeStudentSpecialty(int index) {
+        Console.WriteLine("Enter new specialty for this student:");
+        Specialty newSpecialty = new Specialty(Console.ReadLine());
 
+        if (Start.Students[index].Specialty == newSpecialty) {
+            Console.WriteLine("This is the current specialty.");
+            return;
+        }
+
+        if (!newSpecialty.isSpecialtyExist()) {
+            Console.WriteLine("This specialty does not exist.");
+            return;
+        }
+        
+        Start.Students[index].Specialty = newSpecialty;
+        Console.WriteLine("You sucessfully changed student specialty.");
+    }
+    
     private static void ChangeStudentFullName(int index) {
         Console.WriteLine("Enter new full name for this student:");
         string newFullName = Console.ReadLine();
@@ -136,32 +170,6 @@ public class Admin : User {
         
         Start.Students[index].Email = newEmail;
         Console.WriteLine("You sucessfully changed student email.");
-    }
-
-    private static void ChangeStudentSpecialty(int index) {
-        Console.WriteLine("Enter new specialty for this student:");
-        Specialty newSpecialty = new Specialty(Console.ReadLine());
-
-        if (Start.Students[index].Specialty == newSpecialty) {
-            Console.WriteLine("This is the current specialty.");
-            return;
-        }
-
-        if (!newSpecialty.isSpecialtyExist()) {
-            Console.WriteLine("This specialty does not exist.");
-            return;
-        }
-        
-        Start.Students[index].Specialty = newSpecialty;
-        Console.WriteLine("You sucessfully changed student specialty.");
-    }
-
-    public static void ViewEnrolledCoursesOfStudent() {
-        int index = FindUserIndex() ;
-        if (index == -1) return;
-        
-        Console.WriteLine("Enrolled courses:");
-        Console.WriteLine(string.Join(", " ,Start.Students[index].EnrolledCourses));
     }
 
     private static int FindUserIndex() {
