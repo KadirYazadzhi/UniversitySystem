@@ -31,7 +31,12 @@ public class Course {
         Console.WriteLine("Enter the description of the course:");
         string description = Console.ReadLine();
 
-        Professor professor = Professor.FindProfessor();
+        Professor professor = Professor.FindProfessor("Enter the professor full name or id:");
+
+        if (professor == null) {
+            Console.WriteLine("This professor doesn't exist!");
+            return;
+        }
         
         Console.WriteLine("Enter the price of the course:");
         double price = double.Parse(Console.ReadLine());
@@ -52,29 +57,91 @@ public class Course {
             return;
         }
         
+        Console.WriteLine("Enter the name of the course:");
+        string name = Console.ReadLine();
+        
+        int courseIndex = FindCourse();
+        if (courseIndex == -1) return;
+
+        if (!Professor.FindCourseForProfessor(courseIndex)) {
+            Console.WriteLine("You don't have privileges to change the course!");
+            return;
+        }
+        
         Console.WriteLine("What you want to change? [Name, Description, Professor, Price, Eligible Specialties]");
         string type = Console.ReadLine();
 
         switch (type) {
             case "Name":
-                
+                ChangeCourseName();
                 break;
             case "Description":
-                
+                ChangeCourseDescription(courseIndex);
                 break;
             case "Professor":
-                
+                ChangeCourseProfessor(courseIndex);
                 break;
             case "Price":
-                
+                ChangeCoursePrice(courseIndex);
                 break;
             case "Eligible Specialties":
-                
+                ChangeCourseEligibleSpecialties(courseIndex);
                 break;
             default:
                 Console.WriteLine("Invalid input!");
                 break;
         }
+    }
+
+    private static void ChangeCourseName() {
+        Console.WriteLine("Enter the new name for the course:");
+        string name = Console.ReadLine();
+
+        int index = FindCourseIndex(name);
+        if (index != -1) {
+            Console.WriteLine("Course already exists!");
+            return;
+        }
+        
+        Start.Courses[index].Name = name;
+        Console.WriteLine("Course name is changed successfully!");
+    }
+    
+    private static void ChangeCourseDescription(int index) {
+        Console.WriteLine("Enter the new description for the course:");
+        string description = Console.ReadLine();
+        
+        Start.Courses[index].Description = description;
+        Console.WriteLine("Course description is changed successfully!");
+    }
+    
+    private static void ChangeCourseProfessor(int index) {
+        Professor professor = Professor.FindProfessor("Enter the new professor full name or id:");
+        
+        if (professor == null) {
+            Console.WriteLine("This professor doesn't exist!");
+            return;
+        }
+        
+        Start.Courses[index].Professor = professor;
+        Console.WriteLine("Professor for this course is changed successfully!");
+    }
+    
+    private static void ChangeCoursePrice(int index) {
+        Console.WriteLine("Enter the new price for the course:");
+        double price = double.Parse(Console.ReadLine());
+
+        if (price < 0) {
+            Console.WriteLine("Price cannot be negative!");
+            return;
+        }
+        
+        Start.Courses[index].Price = price;
+        Console.WriteLine("Course price is changed successfully!");
+    }
+    
+    private static void ChangeCourseEligibleSpecialties(int index) {
+
     }
     
     public static void ViewAllCourses() {
@@ -96,6 +163,21 @@ public class Course {
         
         Start.Courses.RemoveAt(courseIndex);
         Console.WriteLine("Successfully deleted course.");
+    }
+
+    public static void DeleteAllCourses() {
+        if (User.LoggedInUser.Role != "Admin") {
+            Console.WriteLine("You don't have privileges to change the course!");
+            return;
+        }
+        
+        Console.WriteLine("Are you sure you want to delete all courses? [Y/N]");
+        char ch = Console.ReadLine().ToUpper()[0];
+        
+        if (ch != 'Y') return;
+        
+        Start.Courses.Clear();
+        Console.WriteLine("All courses have been deleted successfully!");
     }
 
     public static void ViewFullInfoAboutCourse() {
