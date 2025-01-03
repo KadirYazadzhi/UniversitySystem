@@ -27,8 +27,8 @@ public class Professor : User {
         return null;
     }
 
-    public static Professor FindProfessor() {
-        Console.WriteLine("Enter the professor full name or id:");
+    public static Professor FindProfessor(string firstMessage) {
+        Console.WriteLine(firstMessage);
         string data = Console.ReadLine();
         
         Professor professor = null;
@@ -56,5 +56,9 @@ public class Professor : User {
 
      private static Professor GetProfessorById(int id) {
         return Start.Professors.FirstOrDefault(professor => professor.Id == id);
+    }
+
+    public static bool FindCourseForProfessor(int courseIndex) {
+        return Start.Professors.Any(professor => professor.Courses.Contains(Start.Courses[courseIndex]));
     }
 }
