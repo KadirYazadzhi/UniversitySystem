@@ -19,7 +19,7 @@ public class User {
         Role = role;
     }
 
-    public void Register() {
+    public static void Register() {
         Console.WriteLine("Enter username:");
         string username = Console.ReadLine();
 
@@ -81,7 +81,7 @@ public class User {
         Console.WriteLine("You successfully registered");
     }
 
-    public void Login() {
+    public static void Login() {
         Console.WriteLine("Enter the type of the user you want to login: ");
         string type = Console.ReadLine();
 
@@ -118,15 +118,15 @@ public class User {
         Console.WriteLine("Invalid password");
     }
 
-    private bool IsStudentExist(string username) {
+    private static bool IsStudentExist(string username) {
         return Start.Students.Any(student => student.Username == username);
     }
 
-    private bool FindAdminUsername(string username) {
+    private static bool FindAdminUsername(string username) {
         return Start.Admins.Any(admin => admin.Username == username);
     }
 
-    private bool CheckStudentUsernameAndPassword(string username, string password) {
+    private static bool CheckStudentUsernameAndPassword(string username, string password) {
         Student student = Start.Students.FirstOrDefault(s => s.Username == username && s.Password == password);
         
         if (student != null) {
@@ -137,7 +137,7 @@ public class User {
         return false;
     }
 
-    private bool CheckAdminUsernameAndPassword(string username, string password) {
+    private static bool CheckAdminUsernameAndPassword(string username, string password) {
         Admin admin = Start.Admins.FirstOrDefault(a => a.Username == username && a.Password == password);
         
         if (admin != null) {
@@ -148,11 +148,11 @@ public class User {
         return false;
     }
 
-    private bool IsEmailExist(string email) {
+    private static bool IsEmailExist(string email) {
         return Start.Students.Any(student => student.Email == email);
     }
 
-    private bool CheckPasswordIsStrong(string password) {
+    private static bool CheckPasswordIsStrong(string password) {
         if (password.Length < 6) {
             Console.WriteLine("Password must be at least 6 characters long");
             return false;
@@ -176,7 +176,7 @@ public class User {
         return true;
     }
 
-    private int GetLastId() {
+    private static int GetLastId() {
         return Start.Students.Count;
     }
 }

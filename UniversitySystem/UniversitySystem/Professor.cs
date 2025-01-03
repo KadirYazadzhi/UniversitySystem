@@ -15,8 +15,6 @@ public class Professor : User {
         Courses = courses ?? new List<Course>();
     }
 
-
-
     private static Professor GetProfessorByName(string fullName) {
         for (int i = 0; i < Start.Professors.Count; i++) {
             if (Start.Professors[i].FullName == fullName) {
