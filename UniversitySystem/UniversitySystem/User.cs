@@ -117,6 +117,16 @@ public class User {
         
         Console.WriteLine("Invalid password");
     }
+    
+    protected static int FindStudentIndex(string username) {
+        for (int index = 0; index < Start.Students.Count; index++) {
+            if (Start.Students[index].Username == username) {
+                return index;
+            }
+        }
+        
+        return -1;
+    }
 
     private static bool IsStudentExist(string username) {
         return Start.Students.Any(student => student.Username == username);
