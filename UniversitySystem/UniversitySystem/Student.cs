@@ -19,6 +19,17 @@ public class Student : User {
         Discount = 0;
     }
 
+    public static void DeleteStudent() {
+        if (LoggedInUser.Role == "Student") {
+            int index = FindStudentIndex(LoggedInUser.Username);
+            
+            if (index == -1) return;
+            
+            Start.Students.RemoveAt(index);
+            Console.WriteLine("You successfully deleted your profile.");
+        }
+    }
     
+   
 
 }
