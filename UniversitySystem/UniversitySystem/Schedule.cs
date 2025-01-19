@@ -39,4 +39,11 @@ public class Schedule {
         }
     }
 
+    public static void PrintSchedules() {
+        Console.WriteLine("All Schedules:");
+        foreach (Schedule schedule in Start.Schedules) {
+            Console.WriteLine($"Name");
+        }
+    }
+
 }
